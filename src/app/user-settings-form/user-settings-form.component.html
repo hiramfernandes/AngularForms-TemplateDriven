@@ -2,12 +2,29 @@
 <div class="container">
     <h2>User Settings</h2>
 
-    <form #form="ngForm">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
 
       <div class="form-group">
         <label for="name">Name</label>
-        <input id="name" name="name" class="form-control" [(ngModel)]="userSettings.name"/>
+        <input id="name" name="name" class="form-control" [(ngModel)]="userSettings.name"
+            required #classTest #propertyTest="ngModel"
+            (blur)="onBlur(propertyTest)" />
+          <div [hidden]='propertyTest.valid || propertyTest.untouched '
+              class="alert-danger">
+              Enter a name
+          </div>
       </div>
+
+      <h5>CSS Classes for the text field above</h5>
+      <p>{{ classTest.className }}</p>
+
+      <h5>Anguilar Properties for the field above</h5>
+      <p> dirty: {{propertyTest.dirty}} </p>
+      <p> pristine: {{propertyTest.pristine}} </p>
+      <p> touched: {{propertyTest.touched }} </p>
+      <p> untouched: {{propertyTest.untouched }} </p>
+      <p> valid: {{propertyTest.valid}} </p>
+      <p> invalid: {{propertyTest.invalid}} </p>
 
       <div class="form-check form-group">
         <input class="form-check-input" type="checkbox"
@@ -62,4 +79,8 @@
     </form>
   </div>
 
-  <h3>{{ originalUserSettings | json }}</h3>
+  <!-- <h5>Model Information</h5>
+  <p>{{ userSettings || json }}</p> -->
+<!--   
+  <h5>Model Information</h5>
+  <p>{{ form | json }}</p> -->
