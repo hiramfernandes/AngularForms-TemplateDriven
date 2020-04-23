@@ -15,7 +15,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
     ButtonsModule.forRoot()
   ],
   providers: [],

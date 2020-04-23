@@ -19,6 +19,7 @@ export class UserSettingsFormComponent implements OnInit {
   };
 
   userSettings: UserSettings = { ...this.originalUserSettings };
+  singleModel: string;
 
   constructor(private dataService: DataService) { }
 
